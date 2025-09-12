@@ -1,0 +1,121 @@
+<section id="contact" class="contact-section">
+  <!-- floating blue spheres -->
+  <div class="contact-decor decor-1"></div>
+  <div class="contact-decor decor-2"></div>
+  <div class="contact-decor decor-3"></div>
+
+  <div class="container">
+    <div class="grid">
+      <!-- LEFT: Title + copy -->
+      <header class="copy">
+        <h1 class="title">Contact</h1>
+        <h2 class="subtitle">Got a problem to solve?</h2>
+
+        <p class="lede">
+          Encourage people to contact you and describe what role you’re
+          interested in. Show that you will add value to their projects through
+          your work.
+        </p>
+
+        <p class="cta-text">
+          Need a Frontend developer?
+          <a class="cta-link" href="#contact">Contact me!</a>
+        </p>
+      </header>
+
+      <!-- RIGHT: Form (your existing Angular form) -->
+      <div class="form-wrap">
+        <form
+          class="contact-form"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          novalidate
+        >
+          <label class="field">
+            <span class="visually-hidden">Your name</span>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Your name"
+              [attr.aria-invalid]="
+                name?.invalid && (name?.touched || submitted)
+              "
+            />
+            <small
+              class="error"
+              *ngIf="name?.invalid && (name?.touched || submitted)"
+            >
+              Name is required.
+            </small>
+          </label>
+
+          <label class="field">
+            <span class="visually-hidden">Your email</span>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Your email"
+              [attr.aria-invalid]="
+                email?.invalid && (email?.touched || submitted)
+              "
+            />
+            <small
+              class="error"
+              *ngIf="email?.invalid && (email?.touched || submitted)"
+            >
+              Valid e-mail required.
+            </small>
+          </label>
+
+          <label class="field">
+            <span class="visually-hidden">Your message</span>
+            <textarea
+              rows="6"
+              formControlName="message"
+              placeholder="Your message"
+              [attr.aria-invalid]="
+                message?.invalid && (message?.touched || submitted)
+              "
+            ></textarea>
+            <small
+              class="error"
+              *ngIf="message?.invalid && (message?.touched || submitted)"
+            >
+              Min. 10 characters.
+            </small>
+          </label>
+
+          <label class="privacy">
+            <input type="checkbox" formControlName="privacy" />
+            <span>
+              I’ve read the
+              <a href="/privacy" target="_blank" rel="noopener"
+                >privacy policy</a
+              >
+              and agree to the processing of my data as outlined.
+            </span>
+          </label>
+          <small
+            class="error"
+            *ngIf="privacy?.invalid && (privacy?.touched || submitted)"
+          >
+            Please accept.
+          </small>
+
+          <button
+            class="btn"
+            type="submit"
+            [disabled]="form.invalid || sending"
+          >
+            {{ sending ? "Sending…" : "Say hello ;)" }}
+          </button>
+
+          <p class="status success" *ngIf="success">
+            Message prepared in your mail client.
+          </p>
+          <p class="status error" *ngIf="error">{{ error }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

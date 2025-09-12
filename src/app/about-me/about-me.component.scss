@@ -1,0 +1,70 @@
+.about-me-body {
+  display: flex;
+  width: calc(100% - 100px);
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.cirle-half {
+  position: absolute;
+  top: calc(100vh - 100px);
+  left: 50vw;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #5988ff, #0043f0);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.cirle-small {
+  position: absolute;
+  top: calc(100vh + 50px);
+  left: 75vw;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #5988ff, #0043f0);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.about-me-left {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.symbols-with-text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about-me-right {
+  width: 50%;
+}
+
+.about-me-send-message {
+  margin-top: 50px;
+  font-family: "Baloo";
+  color: #5988ff;
+  border: 2px solid #5988ff;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px; /* Smooth rounded edges */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 128px;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 900;
+  font-family: "Baloo";
+
+  color: #5988ff;
+  align-self: center;
+}

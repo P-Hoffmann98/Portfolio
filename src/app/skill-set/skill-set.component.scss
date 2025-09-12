@@ -1,0 +1,34 @@
+.skill-set-body {
+  background: linear-gradient(to bottom right, #5987ff, #1050f3);
+  height: 30vh;
+  padding-right: 50px;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 64px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+p {
+  color: white;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-box {
+  flex: 1 1 100px;
+  min-width: 200px;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}

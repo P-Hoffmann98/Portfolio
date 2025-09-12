@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  font-family: "Montserrat";
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-family: "Baloo";
+  font-weight: 900;
+  color: #5988ff;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+@font-face {
+  font-family: "Baloo";
+  src: url("/assets/fonts/Baloo_2/Baloo2-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}

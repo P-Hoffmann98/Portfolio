@@ -1,0 +1,112 @@
+.my-work-body {
+  position: relative;
+  padding: 2rem;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.project:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.my-work-exscreens {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-info {
+  max-width: 600px;
+}
+
+h1 {
+  font-weight: bold;
+  font-family: "Baloo";
+  font-size: 48px;
+}
+
+h2 {
+  color: #5988ff;
+  font-weight: bold;
+  font-family: "Baloo";
+}
+
+h3 {
+  color: #5988ff;
+  font-weight: 200;
+  font-family: "Baloo";
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Container for entire section */
+.my-work-body {
+  position: relative;
+  padding: 4rem 2rem;
+  background: white;
+  overflow: hidden;
+  z-index: 1; /* base layer */
+}
+
+.project,
+h1,
+h2,
+p {
+  position: relative;
+  z-index: 2; /* above the circles */
+}
+
+/* Reusable circle style */
+.circle {
+  position: absolute;
+  background-color: #5988ff;
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Individual positions & sizes */
+.circle1 {
+  top: 0;
+  left: 40vw;
+  width: 60px;
+  height: 60px;
+}
+
+.circle2 {
+  top: 100px;
+  left: 80px;
+  width: 80px;
+  height: 80px;
+}
+
+.circle3 {
+  top: 300px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+}
+
+.circle4 {
+  bottom: -40px;
+  right: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+.circle5 {
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+}
