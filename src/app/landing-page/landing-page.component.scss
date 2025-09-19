@@ -1,24 +1,28 @@
+/* =========================
+   Base layout
+========================= */
 .landing-page-body {
   height: 100vh;
+  height: 100dvh; /* dvh-aware */
   margin: 0;
   color: #5988ff;
   background: linear-gradient(to bottom, white, lightblue);
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 25px;
+  padding: 25px 50px 0;
   overflow: hidden;
   position: relative;
   z-index: 12;
 }
 
+/* Decorative circle — round & responsive */
 .circle {
   position: absolute;
-  top: -200px;
-  left: -200px;
-  width: 1000px;
-  height: 1000px;
+  top: -20vw;
+  left: -20vw;
+  width: 60vw;
+  height: 60vw;
   background-color: #5988ff;
   border-radius: 50%;
+  z-index: 0;
 }
 
 a {
@@ -26,27 +30,32 @@ a {
   color: #5988ff;
 }
 
-nav {
+/* Nav (works with <nav> or <nav class="site-nav">) */
+nav,
+.site-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  z-index: 10;
+  padding: 12px 16px;
   position: relative;
+  z-index: 20;
 }
 
-nav img {
+nav img,
+.site-nav .logo {
   width: 100px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 24px;
+  align-items: center;
 }
 
-.img-and-text {
-  display: flex;
-}
+/* Hero layout */
+.img-and-text { display: flex; }
 
 .img-container {
   display: flex;
@@ -64,15 +73,8 @@ nav img {
   flex-direction: column;
 }
 
-h1 {
-  font-size: 100px;
-
-  line-height: 1;
-}
-
-h2 {
-  font-size: 40px;
-}
+h1 { font-size: 100px; line-height: 1; }
+h2 { font-size: 40px; }
 
 .socials {
   display: flex;
@@ -86,9 +88,10 @@ h2 {
 .scroll-hint {
   display: flex;
   justify-content: center;
+
   > p {
     position: absolute;
-    bottom: 31vh;
+    bottom: 5vh;
     font-size: 20px;
     font-weight: 500;
   }
@@ -96,31 +99,28 @@ h2 {
 
 .scroll-line {
   position: absolute;
-  bottom: 0px;
   height: 30vh;
   width: 3px;
   background-color: #5988ff;
 }
 
-/* --- Minimal mobile fix: stop image stretching, keep layout/centering as-is --- */
+/* Keep above background circle */
+.img-and-text,
+.text-container,
+.img-container,
+.socials,
+.scroll-hint { z-index: 2; }
+
+/* =========================
+   Mobile / small screens (layout tweaks)
+========================= */
 @media (max-width: 900px) {
-  .img-container {
-    height: auto; /* drop the 92vh only on mobile */
-  }
-  .img-container img {
-    max-width: 75vw; /* scale down naturally */
-    height: auto !important; /* preserve aspect ratio */
-    object-fit: contain; /* no crop, no distortion */
-    object-position: center;
-  }
-}
-/* --- Mobile overlap fix: keep colors & desktop layout unchanged --- */
-@media (max-width: 900px) {
-  /* 1) Stop image stretching */
-  .img-container {
-    height: auto;
-    justify-content: center;
-  }
+  .landing-page-body { max-height: 100dvh; }
+
+  h1 { color: white; font-size: 73px; line-height: 1; }
+  h2 { color: white; font-size: 36px; }
+
+  .img-container { height: auto; justify-content: center; }
   .img-container img {
     max-width: 75vw;
     height: auto !important;
@@ -128,14 +128,14 @@ h2 {
     object-position: center;
   }
 
-  /* 2) Stack content; do not change centering on desktop */
   .img-and-text {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     gap: 16px;
     position: relative;
-    z-index: 2; /* keep above decorations */
+    z-index: 2;
   }
+
   .text-container {
     width: 100%;
     margin-top: 12px;
@@ -143,49 +143,131 @@ h2 {
     align-items: center;
   }
 
-  /* 3) Prevent decorative + floating items from covering content */
-  .circle {
-    z-index: 0;
-  } /* behind everything */
+  .circle { width: 180vw; height: 180vw; left: -80vw; }
+
   nav,
+  .site-nav,
   .socials,
   .scroll-hint,
   .scroll-line {
-    z-index: 1;
     position: relative;
+    z-index: 1;
   }
 
-  /* Move socials into normal flow so they don't sit over the hero */
-  .socials {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin-top: 8px;
-    right: auto;
-    bottom: auto;
-  }
+  .socials { display: none; }
 
-  /* Make the scroll hint non-overlapping (or hide the line) */
   .scroll-hint > p {
-    position: static; /* no absolute overlap */
+    position: static;
     margin-top: 8px;
   }
-  .scroll-line {
-    display: none; /* remove tall absolute bar on phones */
-  }
-}
-/* --- Fix overlap of circle vs. content --- */
-.circle {
-  z-index: 0; /* always in the background */
+
+  .scroll-line { display: none; }
 }
 
-.img-and-text,
-nav,
-.text-container,
-.img-container,
-.socials,
-.scroll-hint {
+/* =========================
+   Hamburger + Full-screen Mobile Menu
+========================= */
+
+/* Hide any legacy trigger if present */
+.menu-toggle { display: none; }
+
+/* Hamburger (hidden on desktop; used both in top bar & as close 'X') */
+.hamburger {
+  display: none;
   position: relative;
-  z-index: 2; /* keep above the circle */
+  width: 36px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.hamburger span {
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: #5988FF;
+  transition: transform 200ms ease, opacity 200ms ease, top 200ms ease;
+}
+.hamburger span:nth-child(1) { top: 2px; }
+.hamburger span:nth-child(2) { top: 12px; }
+.hamburger span:nth-child(3) { top: 22px; }
+
+/* Full-screen overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+  z-index: 30;
+}
+.mobile-menu.open {
+  display: block;
+  pointer-events: auto;
+  background: rgba(0,0,0,0.12); /* dim backdrop */
+}
+
+/* Full-screen panel with right slide-in */
+.mobile-menu .menu-panel {
+  position: absolute;
+  inset: 0;                /* full screen */
+  height: 100vh; height: 100dvh;
+  width: 100vw;
+  background: linear-gradient(180deg, #EAF0FF 0%, #F7FAFF 100%);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 250ms ease, opacity 250ms ease;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.12);
+}
+.mobile-menu.open .menu-panel {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Header with blue logo left & close on right */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+.menu-logo { height: 40px; width: auto; }
+
+/* Close button styled as an X */
+.close-btn span:nth-child(1) { top: 12px; transform: rotate(45deg); }
+.close-btn span:nth-child(2) { opacity: 0; }
+.close-btn span:nth-child(3) { top: 12px; transform: rotate(-45deg); }
+
+/* Links */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+}
+.menu-links a {
+  font-size: 22px;
+  font-weight: 600;
+  color: #5988FF;
+  text-decoration: none;
+}
+
+.site-nav > .hamburger {
+  position: absolute;
+  top: 50%;
+  right: 16px;        /* distance from the right edge — adjust as needed */
+  transform: translateY(-50%);
+  z-index: 25;        /* above the circle */
+}
+
+/* =========================
+   Nav switch breakpoint
+========================= */
+@media (max-width: 768px) {
+  .nav-links { display: none; }        /* hide inline links */
+  .hamburger { display: inline-flex; } /* show burger (open & close) */
+  .mobile-menu { display: block; }     /* enable overlay on mobile */
 }

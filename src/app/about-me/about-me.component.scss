@@ -68,3 +68,63 @@ h2 {
   color: #5988ff;
   align-self: center;
 }
+
+/* MOBILE: stack left (top) and right (bottom) */
+@media (max-width: 900px) {
+  .about-me-body {
+    display: flex;
+    flex-direction: column; /* vertical stacking */
+    align-items: stretch;
+    gap: 20px; /* space between top and bottom blocks */
+  }
+
+  h1 {
+    line-height: 120%;
+    letter-spacing: 0%;
+    font-size: 64px;
+  }
+
+  h2 {
+    line-height: 100%;
+    letter-spacing: 1%;
+    font-size: 32px;
+  }
+
+  .about-me-left,
+  .about-me-right {
+    width: 100%;
+  }
+
+  /* force order: left block comes first, right block comes second */
+  .about-me-left {
+    order: 1;
+  }
+  .about-me-right {
+    order: 2;
+  }
+
+ .symbols-with-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .symbols-with-text > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 28px;
+  }
+  .symbols-with-text img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+  .symbols-with-text p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+}
