@@ -1,8 +1,10 @@
 .skill-set-body {
   background: linear-gradient(to bottom right, #5987ff, #1050f3);
-  height: 30vh;
-  padding-right: 50px;
-  padding-left: 50px;
+  /* remove fixed height */
+  min-height: 0;   
+  height: auto;        
+  padding: 20px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,14 +23,34 @@ p {
 .skills-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;   /* center rows */
+  gap: 20px 30px;            /* row-gap / column-gap */
+  max-width: 900px;          /* prevent over-stretching */
 }
 
 .skill-box {
-  flex: 1 1 100px;
-  min-width: 200px;
-  padding: 10px;
-  margin: 5px;
+  flex: 0 1 28%;             /* about 3 per row */
+  min-width: 100px;          /* keeps small icons readable */
+  max-width: 150px;          /* prevents oversized items */
   text-align: center;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
+
+.skill-box img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* make icons white if needed */
+}
+
+.skill-box p {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
