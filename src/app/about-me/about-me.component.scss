@@ -1,3 +1,5 @@
+$brand: #5988ff;
+
 .about-me-body {
   display: flex;
   width: calc(100% - 100px);
@@ -46,11 +48,11 @@
 
 .about-me-send-message {
   margin-top: 50px;
-  font-family: "Baloo";
+  font-family: 'Courier New', Courier, monospace; //change to Poppins
   color: #5988ff;
   border: 2px solid #5988ff;
   background-color: white;
-  padding: 10px 20px;
+  padding: 13px 24px 13px 24px;
   border-radius: 10px; /* Smooth rounded edges */
   cursor: pointer;
   font-size: 16px;
@@ -76,6 +78,7 @@ h2 {
     flex-direction: column; /* vertical stacking */
     align-items: stretch;
     gap: 20px; /* space between top and bottom blocks */
+    margin-bottom: 100px;
   }
 
   h1 {
@@ -101,14 +104,25 @@ h2 {
   }
   .about-me-right {
     order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
- .symbols-with-text {
-    width: 100%;
+  .about-me-text {
+    font-family: "Montserrat";
+    font-size: 23px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 120%;
+  }
+
+  .symbols-with-text {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
   }
   .symbols-with-text > div {
     display: flex;
@@ -123,8 +137,11 @@ h2 {
   }
   .symbols-with-text p {
     margin: 0;
-    font-size: 13px;
+    color: $brand;
+    font-family: "Montserrat";
+    font-size: 18px;
     font-weight: 600;
     text-align: left;
+    line-height: 120%;
   }
 }
