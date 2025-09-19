@@ -101,3 +101,91 @@ h2 {
   width: 3px;
   background-color: #5988ff;
 }
+
+/* --- Minimal mobile fix: stop image stretching, keep layout/centering as-is --- */
+@media (max-width: 900px) {
+  .img-container {
+    height: auto; /* drop the 92vh only on mobile */
+  }
+  .img-container img {
+    max-width: 75vw; /* scale down naturally */
+    height: auto !important; /* preserve aspect ratio */
+    object-fit: contain; /* no crop, no distortion */
+    object-position: center;
+  }
+}
+/* --- Mobile overlap fix: keep colors & desktop layout unchanged --- */
+@media (max-width: 900px) {
+  /* 1) Stop image stretching */
+  .img-container {
+    height: auto;
+    justify-content: center;
+  }
+  .img-container img {
+    max-width: 75vw;
+    height: auto !important;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* 2) Stack content; do not change centering on desktop */
+  .img-and-text {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 2; /* keep above decorations */
+  }
+  .text-container {
+    width: 100%;
+    margin-top: 12px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* 3) Prevent decorative + floating items from covering content */
+  .circle {
+    z-index: 0;
+  } /* behind everything */
+  nav,
+  .socials,
+  .scroll-hint,
+  .scroll-line {
+    z-index: 1;
+    position: relative;
+  }
+
+  /* Move socials into normal flow so they don't sit over the hero */
+  .socials {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 8px;
+    right: auto;
+    bottom: auto;
+  }
+
+  /* Make the scroll hint non-overlapping (or hide the line) */
+  .scroll-hint > p {
+    position: static; /* no absolute overlap */
+    margin-top: 8px;
+  }
+  .scroll-line {
+    display: none; /* remove tall absolute bar on phones */
+  }
+}
+/* --- Fix overlap of circle vs. content --- */
+.circle {
+  z-index: 0; /* always in the background */
+}
+
+.img-and-text,
+nav,
+.text-container,
+.img-container,
+.socials,
+.scroll-hint {
+  position: relative;
+  z-index: 2; /* keep above the circle */
+}

@@ -1,81 +1,55 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // <-- for *ngIf, *ngFor, etc.
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
-  Validators,
   FormGroup,
-  FormControl,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-
-type ContactForm = FormGroup<{
-  name: FormControl<string>;
-  email: FormControl<string>;
-  message: FormControl<string>;
-  privacy: FormControl<boolean>;
-}>;
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // <-- include CommonModule
-  templateUrl: './contact.component.html', // <-- point to your HTML file
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './contact.component.html',
+  styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
+  form: FormGroup;
   submitted = false;
   sending = false;
   success = false;
   error: string | null = null;
 
-  constructor(private fb: FormBuilder) {}
-
-  form: ContactForm = this.fb.nonNullable.group({
-    name: this.fb.nonNullable.control('', {
-      validators: [Validators.required],
-    }),
-    email: this.fb.nonNullable.control('', {
-      validators: [Validators.required, Validators.email],
-    }),
-    message: this.fb.nonNullable.control('', {
-      validators: [Validators.required, Validators.minLength(10)],
-    }),
-    privacy: this.fb.nonNullable.control(false, {
-      validators: [Validators.requiredTrue],
-    }),
-  });
-
-  // getters for clean template access
-  get name() {
-    return this.form.controls.name;
-  }
-  get email() {
-    return this.form.controls.email;
-  }
-  get message() {
-    return this.form.controls.message;
-  }
-  get privacy() {
-    return this.form.controls.privacy;
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]],
+      privacy: [false, [Validators.requiredTrue]],
+    });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
+    this.error = null;
+    this.success = false;
+
     if (this.form.invalid) return;
 
     this.sending = true;
-    this.error = null;
-
-    // Example: open user's mail client with prefilled content (optional)
-    const { name, email, message } = this.form.getRawValue();
-    const subject = encodeURIComponent(`Contact from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
-    );
-    window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
-
-    this.sending = false;
-    this.success = true;
-    // Optionally reset after a moment
-    // setTimeout(() => this.form.reset({ name: '', email: '', message: '', privacy: false }), 500);
+    try {
+      const { name, email, message } = this.form.value;
+      const subject = encodeURIComponent(`[Portfolio] Message from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`
+      );
+      window.location.href = `mailto:maxi@your-domain.tld?subject=${subject}&body=${body}`;
+      this.success = true;
+    } catch {
+      this.error = 'Could not prepare your message. Please try again.';
+    } finally {
+      this.sending = false;
+    }
   }
 }
