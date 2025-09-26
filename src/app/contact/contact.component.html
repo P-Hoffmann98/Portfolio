@@ -1,74 +1,47 @@
-<section id="contact" class="contact-section">
-  <div class="contact-decor decor-1"></div>
-  <div class="contact-decor decor-2"></div>
-
-  <div class="container">
-    <header class="section-head">
-      <h2>Contact</h2>
-      <p class="lede">
-        Got a problem to solve? I’m happy to hear about your project.
+<div class="contact">
+  <h1>Contact</h1>
+  <div class="contact-container">
+    <div class="contact-left">
+      <h2>Got a problem to solve?</h2>
+      <p>
+        Encourage people to contact you and describe what role you are
+        interested in. Show that you will add value to their projects through
+        your work
       </p>
-    </header>
+      <h3>Need a Frontend developer? <b>Contact me!</b></h3>
+    </div>
+    <div class="contact-right">
+      <form class="contactForm" id="contactForm">
+        <input
+          class="contactInputsName"
+          type="text"
+          id="name"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          class="contactInputsEmail"
+          type="text"
+          id="email"
+          placeholder="Your E-mail"
+          required
+        />
+        <input
+          class="contactInputsMessage"
+          type="text"
+          id="message"
+          placeholder="Your Message"
+          required
+        />
 
-    <div class="form-wrap">
-      <form class="contact-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <label class="field">
-          <span class="label">Your name</span>
-          <input type="text" formControlName="name" placeholder="John Doe" />
-          <small
-            class="error"
-            *ngIf="submitted && form.controls['name'].invalid"
-            >Name is required.</small
+        <div class="contact-checkbox">
+          <input type="checkbox" id="privacy" required />
+          <label class="privacy-label" for="privacy"
+            >I've read the privacy policy and agree to the processing of my data
+            as outlined.</label
           >
-        </label>
-
-        <label class="field">
-          <span class="label">E-mail</span>
-          <input
-            type="email"
-            formControlName="email"
-            placeholder="you@example.com"
-          />
-          <small
-            class="error"
-            *ngIf="submitted && form.controls['email'].invalid"
-            >Valid e-mail required.</small
-          >
-        </label>
-
-        <label class="field">
-          <span class="label">Message</span>
-          <textarea
-            rows="5"
-            formControlName="message"
-            placeholder="Tell me about your idea…"
-          ></textarea>
-          <small
-            class="error"
-            *ngIf="submitted && form.controls['message'].invalid"
-            >Min. 10 characters.</small
-          >
-        </label>
-
-        <label class="privacy">
-          <input type="checkbox" formControlName="privacy" />
-          <span>I consent to processing my data to handle this request.</span>
-        </label>
-        <small
-          class="error"
-          *ngIf="submitted && form.controls['privacy'].invalid"
-          >Please accept.</small
-        >
-
-        <button class="btn" type="submit" [disabled]="form.invalid || sending">
-          {{ sending ? "Sending…" : "Send message" }}
-        </button>
-
-        <p class="status success" *ngIf="success">
-          Message prepared in your mail client.
-        </p>
-        <p class="status error" *ngIf="error">{{ error }}</p>
+        </div>
       </form>
     </div>
   </div>
-</section>
+</div>
