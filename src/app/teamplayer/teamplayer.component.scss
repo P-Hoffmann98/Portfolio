@@ -28,7 +28,6 @@
 
 .comments {
   display: flex;
-  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   z-index: 1;
@@ -37,11 +36,8 @@
 }
 
 .comment-card {
-  background: rgba(255, 255, 255, 0.13);
-  border-radius: 20px;
   padding: 32px 24px;
   width: 320px;
-  box-shadow: 0 8px 32px rgba(40, 88, 255, 0.1);
   font-size: 1rem;
   display: flex;
   flex-direction: column;
@@ -71,6 +67,7 @@
     align-items: center;
   }
   .comment-card {
+    padding: 0px 24px;
     width: 95vw;
     max-width: 400px;
     margin-bottom: 20px;

@@ -110,3 +110,14 @@ p {
   width: 60px;
   height: 60px;
 }
+
+@media (max-width: 900px) {
+  .project {
+    flex-direction: column;
+    padding-top: 25px;
+  }
+
+  .project:nth-child(even) {
+    flex-direction: column;
+  }
+}
