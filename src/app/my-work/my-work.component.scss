@@ -1,37 +1,30 @@
+/* ===== My Work (SCSS) =====
+   IMPORTANT: Put your <div class="circle1"> ... circle7</div>
+   as the FIRST children INSIDE #my-work-body.
+   This file assumes that structure.
+*/
+
+$blue-1: #5988ff;
+$blue-2: #0043f0;
+
+/* Base section */
 .my-work-body {
   position: relative;
+  isolation: isolate; /* make a local stacking context (predictable z-index) */
   padding: 4rem 2rem;
-  background: white;
+  background: #fff;
   overflow: hidden;
-  z-index: 1; /* base layer */
+
+  /* CONTENT LAYER — always above circles */
+  > h1,
+  > p,
+  > .project {
+    position: relative;
+    z-index: 2; /* content layer */
+  }
 }
 
-.project {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-  gap: 2rem;
-}
-
-.project:nth-child(odd) {
-  flex-direction: row-reverse;
-}
-
-.my-work-exscreens {
-  width: 400px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.project-info {
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* Typography */
 h1 {
   font-weight: bold;
   font-family: "Baloo";
@@ -55,92 +48,136 @@ p {
   line-height: 1.6;
 }
 
-.project,
-h1,
-h2,
-p {
-  position: relative;
-  z-index: 3; /* above the circles */
+/* Projects layout */
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  gap: 2rem;
+
+  /* Level 4 selector: counts only .project, ignores other siblings (like .circleX) */
+  &:nth-child(odd of .project) {
+    flex-direction: row-reverse;
+  }
 }
 
-.circle1 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
+.my-work-exscreens {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.circle2 {
-  position: absolute;
-  transform: translate(0%, 0%);
-
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
+.project-info {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.circle3 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
+/* Shared style for all circles */
+.my-work-body {
+  .circle1,
+  .circle2,
+  .circle3,
+  .circle4,
+  .circle5,
+  .circle6,
+  .circle7 {
+    position: absolute;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle, $blue-1, $blue-2);
+    pointer-events: none; /* never block clicks */
+    z-index: 1; /* below content (z=2), above section background */
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+  }
+
+  .circle1 {
+    top: 2%;
+    left: 25%;
+    width: 100px;
+  }
+  .circle2 {
+    top: 8%;
+    left: 12%;
+    width: 175px;
+  }
+  .circle3 {
+    top: 25%;
+    left: -125px;
+    width: 250px;
+  }
+  .circle4 {
+    top: 40%;
+    right: -100px;
+    width: 400px;
+  }
+  .circle5 {
+    top: 16%;
+    left: 12%;
+    width: 50px;
+  }
+  .circle6 {
+    top: 73%;
+    left: 2%;
+    width: 250px;
+  }
+  .circle7 {
+    top: 85%;
+    left: 85%;
+    width: 100px;
+  }
 }
 
-.circle4 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.circle5 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.circle6 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.circle7 {
-  position: absolute;
-  transform: translate(0%, 0%);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #5988ff, #0043f0);
-  border-radius: 50%;
-  z-index: 2;
-}
-
+/* Responsive tweaks */
 @media (max-width: 900px) {
   .project {
     flex-direction: column-reverse;
     padding-top: 25px;
+
+    &:nth-child(odd of .project) {
+      flex-direction: column-reverse;
+    }
   }
 
-  .project:nth-child(odd) {
-    flex-direction: column-reverse;
+  .project-info {
+    align-items: center;
+  }
+
+  .my-work-exscreens {
+    width: min(100%, 360px);
+  }
+
+  .my-work-body {
+    .circle1,
+    .circle2,
+    .circle3,
+    .circle4,
+    .circle5,
+    .circle6,
+    .circle7 {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, $blue-1, $blue-2);
+      pointer-events: none; /* never block clicks */
+      z-index: 1; /* below content (z=2), above section background */
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+    }
+
+    /* Nudge a few for tighter viewports */
+    .circle2 {
+      top: 22%;
+      right: 6%;
+    }
+    .circle3 {
+      top: 52%;
+      left: 30%;
+    }
+    .circle5 {
+      bottom: 10%;
+      right: 8%;
+    }
   }
 }
