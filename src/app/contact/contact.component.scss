@@ -1,3 +1,6 @@
+$blue-1: #5988ff;
+$blue-2: #0043f0;
+
 h1 {
   font-size: 64px;
   margin-bottom: 50px;
@@ -59,6 +62,36 @@ h3 {
   font-size: 12px;
 }
 
+.contact {
+  .circle1,
+  .circle2,
+  .circle3 {
+    position: absolute;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle, $blue-1, $blue-2);
+    pointer-events: none; /* never block clicks */
+    z-index: 1; /* below content (z=2), above section background */
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+  }
+
+  .circle1 {
+    top: 350%;
+    left: 65%;
+    width: 100px;
+  }
+  .circle2 {
+    top: 385%;
+    left: 15%;
+    width: 150px;
+  }
+  .circle3 {
+    top: 400%;
+    left: 90%;
+    width: 50px;
+  }
+}
+
 @media (max-width: 900px) {
   .contact-container {
     flex-direction: column;
@@ -78,5 +111,31 @@ h3 {
   }
   .contactInputsMessage {
     width: 80vw;
+  }
+
+  .contact {
+    .circle1,
+    .circle2,
+    .circle3 {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, $blue-1, $blue-2);
+      pointer-events: none; /* never block clicks */
+      z-index: 1; /* below content (z=2), above section background */
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+    }
+
+    .circle1 {
+      top: 22%;
+      right: 6%;
+    }
+    .circle2 {
+      top: 52%;
+      left: 30%;
+    }
+    .circle3 {
+      bottom: 10%;
+      right: 8%;
+    }
   }
 }
