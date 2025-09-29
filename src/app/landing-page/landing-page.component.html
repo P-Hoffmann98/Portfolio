@@ -1,52 +1,55 @@
 <div class="landing-page-body">
   <div class="circle"></div>
   <nav class="site-nav">
-  <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
 
-  <!-- Links (always in DOM, CSS decides when visible) -->
-  <div class="nav-links">
-    <a href="#about-me-body">About me</a>
-    <a href="#skill-set-body">Skill Set</a>
-    <a href="#my-work-body">My work</a>
-  </div>
+    <!-- Links (always in DOM, CSS decides when visible) -->
+    <div class="nav-links">
+      <a href="#about-me-body">About me</a>
+      <a href="#skill-set-body">Skill Set</a>
+      <a href="#my-work-body">My work</a>
+    </div>
 
-  <!-- Hamburger (only visible on mobile) -->
-  <button
-    class="hamburger"
-    aria-label="Open menu"
-    aria-controls="mobileMenu"
-    [attr.aria-expanded]="isMenuOpen"
-    (click)="isMenuOpen = !isMenuOpen"
-  >
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Slide-in mobile menu -->
-<aside
-  id="mobileMenu"
-  class="mobile-menu"
-  [class.open]="isMenuOpen"
-  (click)="isMenuOpen = false"
->
- <div class="menu-panel" (click)="$event.stopPropagation()">
-  <header class="menu-header">
-    <!-- Use the themable SVG or the static SVG -->
-    <img src="assets/img/logo-5988ff.svg" alt="Logo" class="menu-logo" />
-    <button class="hamburger close-btn" aria-label="Close menu" (click)="isMenuOpen = false">
+    <!-- Hamburger (only visible on mobile) -->
+    <button
+      class="hamburger"
+      aria-label="Open menu"
+      aria-controls="mobileMenu"
+      [attr.aria-expanded]="isMenuOpen"
+      (click)="isMenuOpen = !isMenuOpen"
+    >
       <span></span><span></span><span></span>
     </button>
-  </header>
-
-  <nav class="menu-links">
-    <a href="#about-me-body" (click)="isMenuOpen = false">About Me</a>
-    <a href="#skill-set-body" (click)="isMenuOpen = false">Skill Set</a>
-    <a href="#my-work-body" (click)="isMenuOpen = false">My Work</a>
-    <a href="#contact-body" (click)="isMenuOpen = false">Contact</a>
   </nav>
-</div>
-</aside>
 
+  <!-- Slide-in mobile menu -->
+  <aside
+    id="mobileMenu"
+    class="mobile-menu"
+    [class.open]="isMenuOpen"
+    (click)="isMenuOpen = false"
+  >
+    <div class="menu-panel" (click)="$event.stopPropagation()">
+      <header class="menu-header">
+        <!-- Use the themable SVG or the static SVG -->
+        <img src="assets/img/logo-5988ff.svg" alt="Logo" class="menu-logo" />
+        <button
+          class="hamburger close-btn"
+          aria-label="Close menu"
+          (click)="isMenuOpen = false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </header>
+
+      <nav class="menu-links">
+        <a href="#about-me-body" (click)="isMenuOpen = false">About Me</a>
+        <a href="#skill-set-body" (click)="isMenuOpen = false">Skill Set</a>
+        <a href="#my-work-body" (click)="isMenuOpen = false">My Work</a>
+        <a href="#contact-body" (click)="isMenuOpen = false">Contact</a>
+      </nav>
+    </div>
+  </aside>
 
   <div class="img-and-text">
     <div class="img-container">
@@ -67,7 +70,9 @@
         </a>
       </div>
       <div class="scroll-hint">
-        <p>SCROLL</p>
+        <div class="scroll-text">
+          <p>SCROLL</p>
+        </div>
         <div class="scroll-line"></div>
       </div>
     </div>
