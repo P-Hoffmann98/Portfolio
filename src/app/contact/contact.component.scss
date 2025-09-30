@@ -1,6 +1,23 @@
 $blue-1: #5988ff;
 $blue-2: #0043f0;
 
+.contact-body {
+  position: relative;
+  isolation: isolate; /* make a local stacking context (predictable z-index) */
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+
+  > h1,
+  > h2,
+  > h3,
+  > .contact-container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* Typography */
 h1 {
   font-size: 64px;
   margin-bottom: 50px;
@@ -16,12 +33,6 @@ h3 {
   color: #5988ff;
   font-weight: 400;
   margin-top: 20px;
-}
-
-.contact {
-  padding: 5vw;
-  display: flex;
-  flex-direction: column;
 }
 
 .contact-container {
@@ -62,7 +73,7 @@ h3 {
   font-size: 12px;
 }
 
-.contact {
+.contact-body {
   .circle1,
   .circle2,
   .circle3 {
@@ -76,17 +87,17 @@ h3 {
   }
 
   .circle1 {
-    top: 350%;
+    top: 5%;
     left: 65%;
     width: 100px;
   }
   .circle2 {
-    top: 385%;
+    top: 65%;
     left: 15%;
     width: 150px;
   }
   .circle3 {
-    top: 400%;
+    top: 85%;
     left: 90%;
     width: 50px;
   }
