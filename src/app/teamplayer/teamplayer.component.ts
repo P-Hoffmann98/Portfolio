@@ -1,12 +1,13 @@
+// src/app/teamplayer/teamplayer.component.ts
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-teamplayer',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './teamplayer.component.html',
-  styleUrl: './teamplayer.component.scss'
+  styleUrls: ['./teamplayer.component.scss'],
 })
-export class TeamplayerComponent {
-
-}
+export class TeamplayerComponent {}

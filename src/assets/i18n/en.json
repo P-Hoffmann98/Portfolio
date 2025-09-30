@@ -1,0 +1,86 @@
+{
+  "NAV": {
+    "ABOUT": "About me",
+    "WORK": "Skill Set",
+    "MY_WORK": "My work",
+    "CONTACT": "Contact"
+  },
+  "LANDING": { "TITLE": "Hello! I am Patrick" },
+  "MY_WORK": {
+    "HEADER": "My Work",
+    "INTRO": "Explore a selection of my work here – interact with projects to see my skills in action.",
+    "ACTIONS": { "LIVE": "Live test", "GITHUB": "GitHub" },
+    "PROJECTS": {
+      "JOIN": {
+        "TITLE": "Join",
+        "STACK": "Angular | TypeScript | HTML | CSS | Firebase",
+        "DESC": "Task manager inspired by the Kanban system. Create and organize tasks using drag-and-drop, assign users and categories.",
+        "ALT": "Join project screenshot"
+      },
+      "EPL": {
+        "TITLE": "El Pollo Loco",
+        "STACK": "JavaScript | HTML | CSS",
+        "DESC": "Jump, run and throw game based on an object-oriented approach. Help Pepe find coins and tabasco salsa to fight the crazy chickens.",
+        "ALT": "El Pollo Loco screenshot"
+      },
+      "POKEDEX": {
+        "TITLE": "Pokédex",
+        "STACK": "JavaScript | HTML | CSS | Firebase",
+        "DESC": "Based on the PokéAPI, a simple library that provides and catalogs Pokémon information.",
+        "ALT": "Pokédex screenshot"
+      }
+    }
+  },
+  "TEAMPLAYER": {
+    "HEADER": "Need a teamplayer?",
+    "INTRO": "Here is what my colleagues said about me",
+    "COMMENTS": {
+      "SOPHIE": {
+        "TITLE": "Sophie L., UI/UX Designer",
+        "TEXT": "Patrick has a great eye for detail and always turns designs into pixel-perfect interfaces. Working with him felt like true collaboration."
+      },
+      "DANIEL": {
+        "TITLE": "Daniel K., Full-Stack Developer",
+        "TEXT": "His clean code and structured thinking make him a reliable teammate. You can always count on him to find smart solutions fast."
+      },
+      "LEA": {
+        "TITLE": "Lea M., Project Manager",
+        "TEXT": "Patrick was one of the most dependable developers I worked with — always proactive, communicative, and focused on delivering quality."
+      }
+    }
+  },
+  "CONTACT": {
+    "HEADER": "Contact",
+    "SUBHEAD": "Got a problem to solve?",
+    "DESCR": "Encourage people to contact you and describe what role you are interested in. Show that you will add value to their projects through your work.",
+    "CTA": { "PREFIX": "Need a Frontend developer?", "BTN": "Contact me!" },
+    "FORM": {
+      "NAME_PH": "Your Name",
+      "EMAIL_PH": "Your E-mail",
+      "MESSAGE_PH": "Your Message",
+      "PRIVACY": "I've read the privacy policy and agree to the processing of my data as outlined.",
+      "SEND": "Send"
+    },
+    "VALIDATION": {
+      "NAME": "Please enter at least 2 characters.",
+      "EMAIL": "Please enter a valid email address.",
+      "MESSAGE": "Please enter at least 10 characters.",
+      "PRIVACY": "Please accept the privacy policy."
+    },
+    "SUCCESS": "Thanks! Your email client should have opened. If not, please send me a message directly.",
+    "ERROR_GENERIC": "Could not prepare your message. Please try again.",
+    "EMAIL_SUBJECT": "Message from {{name}}",
+    "EMAIL_BODY_NAME": "Name",
+    "EMAIL_BODY_EMAIL": "Email"
+  },
+  "ABOUT_ME": {
+    "HEADER": "Let's work together!",
+    "SUBHEAD": "I am",
+    "LOCATION": "located in Munich",
+    "REMOTE": "open to work remote",
+    "RELOCATE": "open to relocate",
+    "ABOUT_ME_TEXT": "I am a Front-end developer based in Munich, Germany. I enjoy helpingdesigners and companies bring their ideas into real life. I am lookin forward to continuing my developer career with a job in a junior webdeveloper position. My ability to solve complex problems and my passionfor programming make me a valuable member for your team.",
+    "CONTACT_ME": "If you think I’d be a good match for your projects, contact me!",
+    "SENDMESSAGE": "Send a message!"
+  }
+}

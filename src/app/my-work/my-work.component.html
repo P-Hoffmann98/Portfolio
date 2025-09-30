@@ -6,57 +6,93 @@
   <div class="circle5"></div>
   <div class="circle6"></div>
   <div class="circle7"></div>
-  <h1>My Work</h1>
-  <p>
-    Explore a selection of my work here - Interact with projects to see my
-    skills in action.
-  </p>
+  <h1>{{ "MY_WORK.HEADER" | translate }}</h1>
+  <p>{{ "MY_WORK.INTRO" | translate }}</p>
 
   <div class="project">
     <div class="project-info">
-      <h2>Join</h2>
-      <h3>Angular | Typescript | HTML | CSS | Firebase</h3>
-      <p>
-        Task manager inspired by the Kanban System. Create and organize tasks
-        using drag-drop functions, assign users and categories.
-      </p>
+      <h2>{{ "MY_WORK.PROJECTS.JOIN.TITLE" | translate }}</h2>
+      <h3>{{ "MY_WORK.PROJECTS.JOIN.STACK" | translate }}</h3>
+      <p>{{ "MY_WORK.PROJECTS.JOIN.DESC" | translate }}</p>
+      <div class="project-actions">
+        <a
+          class="btn btn-primary"
+          href="https://join-26.developerakademie.net/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.LIVE" | translate }}</a
+        >
+        <a
+          class="btn btn-ghost"
+          href="https://github.com/P-Hoffmann98/Join"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.GITHUB" | translate }}</a
+        >
+      </div>
     </div>
     <img
       class="my-work-exscreens"
       src="assets/img/join-screenshot.png"
-      alt="Join Project Screenshot"
+      alt="{{ 'MY_WORK.PROJECTS.JOIN.ALT' | translate }}"
     />
   </div>
 
   <div class="project">
     <div class="project-info">
-      <h2>El Pollo Loco</h2>
-      <h3>Javascript | HTML | CSS</h3>
-      <p>
-        Jump, run and throw game based on object-oriented approach. Help Pepe to
-        find coins and tabasco salsa to fight against the crazy chickens.
-      </p>
+      <h2>{{ "MY_WORK.PROJECTS.EPL.TITLE" | translate }}</h2>
+      <h3>{{ "MY_WORK.PROJECTS.EPL.STACK" | translate }}</h3>
+      <p>{{ "MY_WORK.PROJECTS.EPL.DESC" | translate }}</p>
+      <div class="project-actions">
+        <a
+          class="btn btn-primary"
+          href="https://patrick-hoffmann.developerakademie.net/el-pollo-loco/el-pollo-loco-main/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.LIVE" | translate }}</a
+        >
+        <a
+          class="btn btn-ghost"
+          href="https://github.com/P-Hoffmann98/el-pollo-loco"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.GITHUB" | translate }}</a
+        >
+      </div>
     </div>
     <img
       class="my-work-exscreens"
       src="assets/img/epl-screenshot.png"
-      alt="El Pollo Loco Screenshot"
+      alt="{{ 'MY_WORK.PROJECTS.EPL.ALT' | translate }}"
     />
   </div>
 
   <div class="project">
     <div class="project-info">
-      <h2>Pokédex</h2>
-      <h3>Javascript | HTML | CSS | Firebase</h3>
-      <p>
-        Based on the PokéAPI, a simple library that provides and catalogues
-        Pokémon information.
-      </p>
+      <h2>{{ "MY_WORK.PROJECTS.POKEDEX.TITLE" | translate }}</h2>
+      <h3>{{ "MY_WORK.PROJECTS.POKEDEX.STACK" | translate }}</h3>
+      <p>{{ "MY_WORK.PROJECTS.POKEDEX.DESC" | translate }}</p>
+      <div class="project-actions">
+        <a
+          class="btn btn-primary"
+          href="https://patrick-hoffmann.developerakademie.net/Pokedex/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.LIVE" | translate }}</a
+        >
+        <a
+          class="btn btn-ghost"
+          href="https://github.com/yourname/pokedex"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ "MY_WORK.ACTIONS.GITHUB" | translate }}</a
+        >
+      </div>
     </div>
     <img
       class="my-work-exscreens"
       src="assets/img/pokedex-screenshot.png"
-      alt="Pokédex Screenshot"
+      alt="{{ 'MY_WORK.PROJECTS.POKEDEX.ALT' | translate }}"
     />
   </div>
 </div>

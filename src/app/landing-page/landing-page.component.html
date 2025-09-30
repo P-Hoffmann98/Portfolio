@@ -5,9 +5,28 @@
 
     <!-- Links (always in DOM, CSS decides when visible) -->
     <div class="nav-links">
-      <a href="#about-me-body">About me</a>
-      <a href="#skill-set-body">Skill Set</a>
-      <a href="#my-work-body">My work</a>
+      <a href="#about-me-body">{{ "NAV.ABOUT" | translate }}</a>
+      <a href="#skill-set-body">{{ "NAV.WORK" | translate }}</a>
+      <a href="#my-work-body">{{ "NAV.MY_WORK" | translate }}</a>
+
+      <!-- Language switch (right of "My work") -->
+      <div class="lang-switch" aria-label="Language">
+        <button
+          type="button"
+          [class.active]="currentLang === 'de'"
+          (click)="setLang('de')"
+        >
+          DE
+        </button>
+        <span class="sep">/</span>
+        <button
+          type="button"
+          [class.active]="currentLang === 'en'"
+          (click)="setLang('en')"
+        >
+          EN
+        </button>
+      </div>
     </div>
 
     <!-- Hamburger (only visible on mobile) -->
@@ -43,10 +62,18 @@
       </header>
 
       <nav class="menu-links">
-        <a href="#about-me-body" (click)="isMenuOpen = false">About Me</a>
-        <a href="#skill-set-body" (click)="isMenuOpen = false">Skill Set</a>
-        <a href="#my-work-body" (click)="isMenuOpen = false">My Work</a>
-        <a href="#contact-body" (click)="isMenuOpen = false">Contact</a>
+        <a href="#about-me-body" (click)="isMenuOpen = false">{{
+          "NAV.ABOUT" | translate
+        }}</a>
+        <a href="#skill-set-body" (click)="isMenuOpen = false">{{
+          "NAV.WORK" | translate
+        }}</a>
+        <a href="#my-work-body" (click)="isMenuOpen = false">{{
+          "NAV.MY_WORK" | translate
+        }}</a>
+        <a href="#contact-body" (click)="isMenuOpen = false">{{
+          "NAV.CONTACT" | translate
+        }}</a>
       </nav>
     </div>
   </aside>

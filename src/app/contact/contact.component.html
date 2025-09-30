@@ -1,54 +1,92 @@
-<div class="contact-body">
+<div class="contact-body" id="contact-body">
   <div class="circle1"></div>
   <div class="circle2"></div>
   <div class="circle3"></div>
-  <h1>Contact</h1>
+  <h1>{{ "CONTACT.HEADER" | translate }}</h1>
+
   <div class="contact-container">
     <div class="contact-left">
-      <h2>Got a problem to solve?</h2>
-      <p>
-        Encourage people to contact you and describe what role you are
-        interested in. Show that you will add value to their projects through
-        your work
-      </p>
-      <h3>Need a Frontend developer? <b>Contact me!</b></h3>
+      <h2>{{ "CONTACT.SUBHEAD" | translate }}</h2>
+      <p>{{ "CONTACT.DESCR" | translate }}</p>
+      <h3>
+        {{ "CONTACT.CTA.PREFIX" | translate }}
+        <b>{{ "CONTACT.CTA.BTN" | translate }}</b>
+      </h3>
     </div>
+
     <div class="contact-right">
-      <form class="contactForm" id="contactForm">
+      <form
+        class="contactForm"
+        id="contactForm"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        novalidate
+      >
         <input
           class="contactInputsName"
           type="text"
-          id="name"
-          placeholder="Your Name"
+          formControlName="name"
+          [placeholder]="'CONTACT.FORM.NAME_PH' | translate"
+          aria-label="name"
           required
         />
+        <div class="error" *ngIf="submitted && f['name'].invalid">
+          {{ "CONTACT.VALIDATION.NAME" | translate }}
+        </div>
+
         <input
           class="contactInputsEmail"
-          type="text"
-          id="email"
-          placeholder="Your E-mail"
+          type="email"
+          formControlName="email"
+          [placeholder]="'CONTACT.FORM.EMAIL_PH' | translate"
+          aria-label="email"
           required
         />
-        <input
+        <div class="error" *ngIf="submitted && f['email'].invalid">
+          {{ "CONTACT.VALIDATION.EMAIL" | translate }}
+        </div>
+
+        <textarea
           class="contactInputsMessage"
-          type="text"
-          id="message"
-          placeholder="Your Message"
+          formControlName="message"
+          rows="5"
+          [placeholder]="'CONTACT.FORM.MESSAGE_PH' | translate"
+          aria-label="message"
           required
-        />
+        ></textarea>
+        <div class="error" *ngIf="submitted && f['message'].invalid">
+          {{ "CONTACT.VALIDATION.MESSAGE" | translate }}
+        </div>
 
         <div class="contact-checkbox">
           <input
-            class="contact-privacy-checkbox"
             type="checkbox"
             id="privacy"
+            formControlName="privacy"
             required
           />
-          <label class="privacy-label" for="privacy"
-            >I've read the privacy policy and agree to the processing of my data
-            as outlined.</label
-          >
+          <label class="privacy-label" for="privacy">
+            {{ "CONTACT.FORM.PRIVACY" | translate }}
+          </label>
         </div>
+        <div class="error" *ngIf="submitted && f['privacy'].invalid">
+          {{ "CONTACT.VALIDATION.PRIVACY" | translate }}
+        </div>
+
+        <div class="actions">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="sending || form.invalid"
+          >
+            {{ "CONTACT.FORM.SEND" | translate }}
+          </button>
+        </div>
+
+        <p class="success" *ngIf="success">
+          {{ "CONTACT.SUCCESS" | translate }}
+        </p>
+        <p class="error" *ngIf="error">{{ error }}</p>
       </form>
     </div>
   </div>

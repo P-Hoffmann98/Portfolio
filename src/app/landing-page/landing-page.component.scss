@@ -50,6 +50,43 @@ nav img,
   display: flex;
   gap: 24px;
   align-items: center;
+
+  a {
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Language switch right of "My work" (desktop) */
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between DE / EN */
+    margin-left: 24px; /* space after last nav link */
+    font-size: inherit;
+    line-height: 1;
+
+    .sep {
+      opacity: 0.6;
+      user-select: none;
+    }
+
+    button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit; /* same size as nav links */
+      color: inherit;
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: none;
+
+      &.active {
+        font-weight: 700; /* bold */
+        text-decoration: underline; /* underline on desktop */
+        text-underline-offset: 4px;
+      }
+    }
+  }
 }
 
 /* Hero layout */
@@ -100,7 +137,7 @@ h2 {
   gap: 25px;
 }
 
-.scrolltext {
+.scroll-text {
   font-size: 20px;
   font-weight: 500;
 }
@@ -293,12 +330,41 @@ h2 {
   flex-direction: column;
   gap: 20px;
   padding: 16px;
-}
-.menu-links a {
-  font-size: 22px;
-  font-weight: 600;
-  color: #5988ff;
-  text-decoration: none;
+
+  a {
+    font-size: 22px;
+    font-weight: 600;
+    color: #5988ff;
+    text-decoration: none;
+  }
+
+  /* Mobile language switch: last item, bold active (no underline) */
+  .menu-lang-switch {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .sep {
+      opacity: 0.6;
+      user-select: none;
+    }
+
+    button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      font-weight: 500;
+
+      &.active {
+        font-weight: 700; /* bold only on mobile */
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .site-nav > .hamburger {
@@ -322,4 +388,9 @@ h2 {
   .mobile-menu {
     display: block;
   } /* enable overlay on mobile */
+
+  /* Hide the desktop language switch when the inline nav hides */
+  .nav-links .lang-switch {
+    display: none;
+  }
 }
