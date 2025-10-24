@@ -5,7 +5,11 @@
     "MY_WORK": "My work",
     "CONTACT": "Contact"
   },
-  "LANDING": { "TITLE": "Hello! I am Patrick" },
+  "LANDING": {
+    "INTRODUCTION": "Hello! I am Patrick",
+    "TITLE": "FRONTEND DEVELOPER"
+  },
+
   "MY_WORK": {
     "HEADER": "My Work",
     "INTRO": "Explore a selection of my work here – interact with projects to see my skills in action.",
