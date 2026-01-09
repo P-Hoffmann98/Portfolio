@@ -1,5 +1,6 @@
+/* Fluid padding replaces fixed 80px */
 .footer {
-  padding: 80px;
+  padding: clamp(40px, 8vw, 80px);
   background: radial-gradient(#5988ff 0%, #5988ff 25%, #0043f0 100%);
   color: white;
 }
@@ -17,14 +18,15 @@
   align-items: center;
 }
 
+/* Fixed: vh units replaced with rem/clamp for better readability */
 .footer-name {
-  font-size: 1.5vh;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 .footer-legal {
   display: flex;
   justify-content: center;
   margin-top: 25px;
-  font-size: 1vh;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
 }
 
 .footer-socials {
@@ -32,8 +34,139 @@
   gap: 3vw;
 }
 
-@media (max-width: 900px) {
+/* ============================================
+   BREAKPOINT: Small Mobile (≤480px)
+   - Vertical stacking of all elements
+   - Centered layout
+   - Reduced gaps and padding
+   ============================================ */
+@media (max-width: 480px) {
   .footer {
+    padding: 60px 20px 40px;
+  }
+
+  .footer-logo {
+    display: block;
+    margin: 0 auto 32px;
+    height: 60px;
+    width: auto;
+  }
+
+  .footer-container {
     flex-direction: column;
+    gap: 32px;
+    margin-top: 0;
+    align-items: center;
+  }
+
+  .footer-nameandlegal {
+    order: 2;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+  }
+
+  .footer-socials {
+    order: 3;
+    gap: 24px;
+    justify-content: center;
+
+    img {
+      width: 40px;
+      height: 40px;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .footer-legal {
+    font-size: 14px;
+    margin-top: 32px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
+
+/* ============================================
+   BREAKPOINT: Tablet Portrait (≤768px)
+   - Horizontal layout maintained
+   - Better distribution of space
+   - Touch-friendly link sizes
+   ============================================ */
+@media (max-width: 768px) and (min-width: 481px) {
+  .footer {
+    padding: 50px 40px;
+  }
+
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .footer-socials {
+    gap: 25px;
+
+    img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .footer-name {
+    font-size: 0.95rem;
+  }
+
+  .footer-legal {
+    font-size: 0.8rem;
+    margin-top: 20px;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Large Tablet (≤900px)
+   - Full horizontal layout
+   - Optimal spacing between elements
+   ============================================ */
+@media (max-width: 900px) and (min-width: 769px) {
+  .footer {
+    padding: 60px 50px;
+  }
+
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-socials {
+    gap: 2vw;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Desktop Small (≤1024px)
+   - Desktop layout begins
+   - Optimized spacing
+   ============================================ */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .footer {
+    padding: 70px 60px;
+  }
+
+  .footer-socials {
+    gap: 2.5vw;
+  }
+}
+

@@ -1,12 +1,13 @@
 $brand: #5988ff;
 
+/* Uses fluid spacing from global styles.scss */
 .about-me-body {
   display: flex;
-  width: calc(100% - 100px);
-  margin-top: 150px;
-  margin-bottom: 150px;
-  margin-left: 50px;
-  margin-right: 50px;
+  width: calc(100% - var(--spacing-lg));
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  margin-left: var(--spacing-md);
+  margin-right: var(--spacing-md);
 }
 
 .cirle-half {
@@ -65,15 +66,15 @@ $brand: #5988ff;
   font-size: 16px;
 }
 
+/* Uses fluid typography from global styles.scss */
 h1 {
-  font-size: 80px;
+  font-size: var(--h1);
 }
 
 h2 {
   font-size: 48px;
   font-weight: 900;
   font-family: "Baloo";
-
   color: #5988ff;
   align-self: center;
 }
@@ -82,22 +83,57 @@ h2 {
 @media (max-width: 900px) {
   .about-me-body {
     display: flex;
-    flex-direction: column; /* vertical stacking */
-    align-items: stretch;
-    gap: 20px; /* space between top and bottom blocks */
-    margin-bottom: 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 80px auto;
+    padding: 0 24px;
+    width: calc(100% - 48px);
+    max-width: 600px;
+    background: #f8f9fb;
+    position: relative;
+  }
+
+  .cirle-half {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: #5988ff;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .cirle-small {
+    position: absolute;
+    top: -20px;
+    right: 15%;
+    width: 60px;
+    height: 60px;
+    background: #5988ff;
+    border-radius: 50%;
+    z-index: 1;
   }
 
   h1 {
-    line-height: 120%;
+    line-height: 1.1;
     letter-spacing: 0%;
-    font-size: 64px;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: #5988ff;
+    text-align: center;
+    margin-bottom: 16px;
   }
 
   h2 {
-    line-height: 100%;
-    letter-spacing: 1%;
-    font-size: 32px;
+    line-height: 1;
+    letter-spacing: 0%;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #5988ff;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 24px;
   }
 
   .about-me-left,
@@ -105,10 +141,13 @@ h2 {
     width: 100%;
   }
 
-  /* force order: left block comes first, right block comes second */
   .about-me-left {
     order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
   .about-me-right {
     order: 2;
     display: flex;
@@ -118,37 +157,159 @@ h2 {
 
   .about-me-text {
     font-family: "Montserrat";
-    font-size: 23px;
+    font-size: 16px;
     font-weight: 400;
     text-align: left;
-    line-height: 120%;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 24px;
   }
 
   .symbols-with-text {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     align-items: flex-start;
     width: 100%;
+    margin-bottom: 24px;
   }
+
   .symbols-with-text > div {
     display: flex;
     align-items: center;
-    gap: 10px;
-    min-height: 28px;
+    gap: 12px;
   }
+
   .symbols-with-text img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
   }
+
   .symbols-with-text p {
     margin: 0;
-    color: $brand;
+    color: #5988ff;
     font-family: "Montserrat";
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     text-align: left;
-    line-height: 120%;
+    line-height: 1.4;
+  }
+
+  .about-me-send-message {
+    background-color: #5988ff;
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
+
+/* ============================================
+   BREAKPOINT: Small Mobile (≤480px)
+   - Aggressive margin reduction for small screens
+   - Repositioned decorative circles
+   - Full-width button
+   ============================================ */
+@media (max-width: 480px) {
+  .about-me-body {
+    width: calc(100% - 32px);
+    margin: 60px 16px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 10vw, 64px);
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .about-me-send-message {
+    padding: 10px 18px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* Kreise bleiben sichtbar, werden repositioniert */
+  .cirle-half {
+    left: 35vw;
+    width: 150px;
+    height: 150px;
+  }
+
+  .cirle-small {
+    left: 65vw;
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Tablet Portrait (≤768px)
+   - Side-by-side layout maintained
+   - Reduced gap for better fit
+   - Adjusted circle positions
+   ============================================ */
+@media (max-width: 768px) and (min-width: 481px) {
+  .about-me-body {
+    gap: 30px;
+    margin: 100px 40px;
+  }
+
+  .about-me-left,
+  .about-me-right {
+    width: 48%;
+  }
+
+  h1 {
+    font-size: clamp(56px, 8vw, 72px);
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .cirle-half {
+    left: 40vw;
+    width: 150px;
+    height: 150px;
+  }
+
+  .cirle-small {
+    left: 70vw;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Desktop Small (≤1024px)
+   - Optimized spacing for smaller desktops
+   - Side-by-side layout maintained
+   ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-me-body {
+    width: calc(100% - 80px);
+    margin-left: 40px;
+    margin-right: 40px;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 72px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+}
+

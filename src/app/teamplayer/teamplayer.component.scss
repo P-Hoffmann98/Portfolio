@@ -35,9 +35,10 @@
   max-width: 1100px;
 }
 
+/* Fluid card width for responsive layouts */
 .comment-card {
   padding: 32px 24px;
-  width: 320px;
+  width: min(320px, 90vw);
   font-size: 1rem;
   display: flex;
   flex-direction: column;
@@ -60,16 +61,136 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* ============================================
+   BREAKPOINT: Small Mobile (≤480px)
+   - Single-column layout
+   - Full-width cards for readability
+   - Reduced padding for small screens
+   ============================================ */
+@media (max-width: 480px) {
+  .teamplayer-body {
+    padding: 60px 20px 80px;
+
+    h1 {
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    > p {
+      font-size: 16px;
+      margin-bottom: 40px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
   .comments {
     flex-direction: column;
-    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .comment-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 32px 24px;
+    min-height: 180px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: white;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 300;
+    }
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Tablet Portrait (≤768px)
+   - 2-column grid for better horizontal space usage
+   - Balanced card sizing
+   - Last odd card spans both columns
+   ============================================ */
+@media (max-width: 768px) and (min-width: 481px) {
+  .teamplayer-body {
+    padding: 50px 30px 70px;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .comments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .comment-card {
+    width: 100%;
+    max-width: none;
+    padding: 28px 20px;
+
+    /* If odd number of cards, span last one across both columns */
+    &:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 340px;
+      justify-self: center;
+    }
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Large Tablet (≤900px)
+   - Maintains 2-column grid or transitions to 3-column
+   - Existing styles enhanced
+   ============================================ */
+@media (max-width: 900px) and (min-width: 769px) {
+  .comments {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
   }
   .comment-card {
-    padding: 0px 24px;
-    width: 95vw;
+    padding: 28px 24px;
+    width: min(300px, 45%);
     max-width: 400px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Desktop Small (≤1024px)
+   - 3-column layout for optimal space use
+   - Maintains card proportions
+   ============================================ */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .comments {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 950px;
+  }
+
+  .comment-card {
+    width: min(300px, 30vw);
+    flex: 0 1 30%;
   }
 }

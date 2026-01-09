@@ -1,7 +1,55 @@
+/* ===========================================
+   RESPONSIVE DESIGN SYSTEM
+   ===========================================
+   Breakpoints:
+   - 480px:  Small mobile (iPhone SE, Android small)
+   - 768px:  Tablet portrait (iPad portrait)
+   - 900px:  Large tablet / small desktop
+   - 1024px: Desktop small (iPad landscape)
+   - >1024px: Full desktop
+
+   Fluid Typography: Uses clamp() for automatic scaling
+   Fluid Spacing: Uses CSS custom properties with clamp()
+   Brand Color: #5988ff (primary blue)
+   =========================================== */
+
+/* Breakpoint variables for SCSS usage */
+$breakpoint-mobile-small: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-large: 900px;
+$breakpoint-desktop-small: 1024px;
+
+/* CSS Custom Properties for fluid design */
+:root {
+  --brand: #5988ff;
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 16px;
+
+  /* Fluid Typography - scales automatically with viewport */
+  --h1: clamp(2.5rem, 1rem + 6vw, 6.25rem); /* 40px → 100px */
+  --h2: clamp(1.5rem, 0.75rem + 3vw, 2.5rem); /* 24px → 40px */
+  --body: clamp(0.95rem, 0.85rem + 0.3vw, 1.125rem); /* ~15px → 18px */
+
+  /* Fluid Spacing - responsive margins and paddings */
+  --spacing-xs: clamp(0.5rem, 1vw, 0.75rem); /* 8px → 12px */
+  --spacing-sm: clamp(0.75rem, 2vw, 1.5rem); /* 12px → 24px */
+  --spacing-md: clamp(1.5rem, 3vw, 3rem); /* 24px → 48px */
+  --spacing-lg: clamp(3rem, 5vw, 6rem); /* 48px → 96px */
+  --spacing-xl: clamp(6rem, 8vw, 9.375rem); /* 96px → 150px */
+}
+
 * {
   margin: 0;
   font-family: "Montserrat";
   scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {

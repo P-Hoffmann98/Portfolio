@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -26,5 +25,10 @@ export class LandingPageComponent {
     this.currentLang = lang;
     this.t.use(lang);
     localStorage.setItem('lang', lang);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEsc() {
+    this.isMenuOpen = false;
   }
 }

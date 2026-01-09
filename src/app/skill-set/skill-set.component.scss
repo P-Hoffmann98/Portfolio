@@ -53,4 +53,109 @@ p {
   font-weight: 600;
 }
 
+/* ============================================
+   BREAKPOINT: Small Mobile (≤480px)
+   - 3-column grid for optimal mobile layout
+   - Compact spacing to fit all skills
+   ============================================ */
+@media (max-width: 480px) {
+  .skill-set-body {
+    padding: 60px 20px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 16px;
+    max-width: 100%;
+  }
+
+  .skill-box {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .skill-box img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .skill-box p {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Tablet Portrait (≤768px)
+   - 3-column layout for balanced display
+   - Optimal spacing for tablet screens
+   ============================================ */
+@media (max-width: 768px) and (min-width: 481px) {
+  .skill-set-body {
+    padding: 60px 30px;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 7vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 48px;
+  }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 20px;
+    max-width: 600px;
+  }
+
+  .skill-box {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .skill-box img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .skill-box p {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Large Tablet (≤900px)
+   - 4-column layout for wider screens
+   - Transition to desktop spacing
+   ============================================ */
+@media (max-width: 900px) and (min-width: 769px) {
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 25px;
+    max-width: 750px;
+  }
+}
+
+/* ============================================
+   BREAKPOINT: Desktop Small (≤1024px)
+   - 5-column layout for optimal use of space
+   - Maintains visual consistency
+   ============================================ */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 30px;
+    max-width: 850px;
+  }
+}
 

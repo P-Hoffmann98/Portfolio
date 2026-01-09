@@ -74,34 +74,56 @@
         <a href="#contact-body" (click)="isMenuOpen = false">{{
           "NAV.CONTACT" | translate
         }}</a>
+
+        <!-- Language switch for mobile menu -->
+        <div class="menu-lang-switch">
+          <button
+            type="button"
+            [class.active]="currentLang === 'de'"
+            (click)="setLang('de')"
+          >
+            DE
+          </button>
+          <span class="sep">/</span>
+          <button
+            type="button"
+            [class.active]="currentLang === 'en'"
+            (click)="setLang('en')"
+          >
+            EN
+          </button>
+        </div>
       </nav>
     </div>
   </aside>
 
-  <div class="img-and-text">
+  <div class="text-container">
+    <h2>{{ "LANDING.INTRODUCTION" | translate }}</h2>
+    <h1>{{ "LANDING.TITLE" | translate }}</h1>
+    <div class="socials">
+      <a href="https://github.com/P-Hoffmann98?tab=repositories">
+        <img src="assets/img/github_social.png" alt="GitHub" />
+      </a>
+      <a href="">
+        <img src="assets/img/email_social.png" alt="E-Mail" />
+      </a>
+      <a href="https://www.linkedin.com/in/patrick-hoffmann-7a98822b1/">
+        <img src="assets/img/linkedin_social.png" alt="Linkedin" />
+      </a>
+    </div>
+
     <div class="img-container">
       <img src="assets/img/pic_crossed_arms_nobg.png" alt="Picture" />
     </div>
-    <div class="text-container">
-      <h2>{{ "LANDING.INTRODUCTION" | translate }}</h2>
-      <h1>{{ "LANDING.TITLE" | translate }}</h1>
-      <div class="socials">
-        <a href="https://github.com/P-Hoffmann98?tab=repositories">
-          <img src="assets/img/github_social.png" alt="GitHub" />
-        </a>
-        <a href="">
-          <img src="assets/img/email_social.png" alt="E-Mail" />
-        </a>
-        <a href="https://www.linkedin.com/in/patrick-hoffmann-7a98822b1/">
-          <img src="assets/img/linkedin_social.png" alt="Linkedin" />
-        </a>
-      </div>
-      <div class="scroll-hint">
-        <div class="scroll-text">
-          <p>SCROLL</p>
-        </div>
-        <div class="scroll-line"></div>
-      </div>
+  </div>
+  <div class="scroll-hint-desktop">
+    <div class="scroll-text-desktop">
+      <p>Scroll for more</p>
     </div>
+    <div class="scroll-line-desktop"></div>
+  </div>
+  <div class="scroll-hint-mobile">
+    <p>Scroll down</p>
+    <img class="scroll-arrow-mobile" src="assets/img/downArrow.png" alt="" />
   </div>
 </div>
